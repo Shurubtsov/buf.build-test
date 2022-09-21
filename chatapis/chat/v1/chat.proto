@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package chat.v1;
+
+option go_package = "chat/v1;chat_api";
+
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+service ChatService {
+    rpc GetChat(GetChatRequest) returns (GetChatResponse) {
+        option (google.api.http) = {
+            get: "/chat-service/get-chat"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            tags: "Чаты";
+            description: "Запрос на получение чата"
+        };
+    }
+}
+
+message GetChatRequest {
+    string chat_id = 1;
+}
+
+message GetChatResponse {
+    Chat chat = 1;
+}
+
+message Chat {
+    string name = 1;
+    string id = 2;
+}
