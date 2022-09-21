@@ -1,4 +1,4 @@
-module github.com/doshurubtsov
+module githab.com/Shurubtsov/buf.build-test/gen/go/chat_service
 
 go 1.18
 

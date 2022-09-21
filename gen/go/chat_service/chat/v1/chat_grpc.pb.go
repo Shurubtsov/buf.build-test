@@ -31,7 +31,7 @@ func NewChatServiceClient(cc grpc.ClientConnInterface) ChatServiceClient {
 
 func (c *chatServiceClient) GetChat(ctx context.Context, in *GetChatRequest, opts ...grpc.CallOption) (*GetChatResponse, error) {
 	out := new(GetChatResponse)
-	err := c.cc.Invoke(ctx, "/chat.v1.ChatService/GetChat", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/chatapis.chat.v1.ChatService/GetChat", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func _ChatService_GetChat_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/chat.v1.ChatService/GetChat",
+		FullMethod: "/chatapis.chat.v1.ChatService/GetChat",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ChatServiceServer).GetChat(ctx, req.(*GetChatRequest))
@@ -88,7 +88,7 @@ func _ChatService_GetChat_Handler(srv interface{}, ctx context.Context, dec func
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ChatService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "chat.v1.ChatService",
+	ServiceName: "chatapis.chat.v1.ChatService",
 	HandlerType: (*ChatServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -97,5 +97,5 @@ var ChatService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "chat/v1/chat.proto",
+	Metadata: "chat_service/chat/v1/chat.proto",
 }

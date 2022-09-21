@@ -1,12 +1,12 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "chat/v1/chat.proto",
+    "title": "message_service/message/v1/message.proto",
     "version": "version not set"
   },
   "tags": [
     {
-      "name": "ChatService"
+      "name": "MessageService"
     }
   ],
   "consumes": [
@@ -16,15 +16,15 @@
     "application/json"
   ],
   "paths": {
-    "/chat-service/get-chat": {
+    "/message-service/get-message": {
       "get": {
-        "description": "Запрос на получение чата",
-        "operationId": "ChatService_GetChat",
+        "description": "Запрос на получение сообщения",
+        "operationId": "MessageService_GetChat",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1GetChatResponse"
+              "$ref": "#/definitions/v1GetMessageResponse"
             }
           },
           "default": {
@@ -36,14 +36,14 @@
         },
         "parameters": [
           {
-            "name": "chatId",
+            "name": "messageId",
             "in": "query",
             "required": false,
             "type": "string"
           }
         ],
         "tags": [
-          "Чаты"
+          "Сообщения"
         ]
       }
     }
@@ -76,22 +76,22 @@
         }
       }
     },
-    "v1Chat": {
+    "v1GetMessageResponse": {
       "type": "object",
       "properties": {
-        "name": {
+        "message": {
+          "$ref": "#/definitions/v1Message"
+        }
+      }
+    },
+    "v1Message": {
+      "type": "object",
+      "properties": {
+        "text": {
           "type": "string"
         },
         "id": {
           "type": "string"
-        }
-      }
-    },
-    "v1GetChatResponse": {
-      "type": "object",
-      "properties": {
-        "chat": {
-          "$ref": "#/definitions/v1Chat"
         }
       }
     }
