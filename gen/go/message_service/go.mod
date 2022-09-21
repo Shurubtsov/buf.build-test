@@ -1,4 +1,4 @@
-module githab.com/Shurubtsov/buf.build-test/gen/go/message_service
+module github.com/Shurubtsov/buf.build-test/gen/go/message_service
 
 go 1.18
 
